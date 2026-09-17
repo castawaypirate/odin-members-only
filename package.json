@@ -1,0 +1,20 @@
+{
+  "name": "odin-members-only",
+  "version": "1.0.0",
+  "description": "The idea is that only members can see posts' authors.",
+  "homepage": "https://github.com/castawaypirate/odin-members-only#readme",
+  "bugs": {
+    "url": "https://github.com/castawaypirate/odin-members-only/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/castawaypirate/odin-members-only.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
