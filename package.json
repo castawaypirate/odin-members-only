@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/castawaypirate/odin-members-only.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "type": "module",
   "main": "app.js",
