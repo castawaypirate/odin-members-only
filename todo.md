@@ -1,7 +1,10 @@
 # backlog: 
-database schema and creation script
+- sign up form (ui, sanitization, validation, post request)
+- login form (ui, post request, session + cookies)
+- show/hide password button
 
 # done:
+- database schema and creation script
 
 
 # structure
@@ -15,7 +18,7 @@ members-only/
 │   ├── userModel.js         # queries: create user, find by username/id, update
 │   └── messageModel.js      # queries: create, get, delete
 ├── controllers/
-│   ├── authController.js    # sign-up + log-out handler logic
+│   ├── authController.js    # register + log-out handler logic
 │   ├── membershipController.js  # join-club passcode logic, admin passcode logic
 │   └── messageController.js # home page listing, new-message form, delete message
 ├── middleware/
@@ -23,7 +26,7 @@ members-only/
 │   └── validators.js        # express-validator chains
 ├── routes/
 │   ├── index.js             # mounts the routers below
-│   ├── authRouter.js        # /sign-up, /log-in, /log-out
+│   ├── authRouter.js        # /register, /log-in, /log-out
 │   ├── membershipRouter.js  # /join, /admin
 │   └── messageRouter.js     # /, /new-message, /messages/:id/delete
 ├── views/
@@ -32,7 +35,7 @@ members-only/
 │   │   ├── footer.ejs
 │   │   └── message.ejs      # single message partial, reused on the home page
 │   ├── index.ejs            # home page / message list
-│   ├── sign-up-form.ejs
+│   ├── register-form.ejs
 │   ├── log-in-form.ejs
 │   ├── join-form.ejs        # membership passcode form
 │   ├── admin-form.ejs       # admin passcode form (if not a signup checkbox)

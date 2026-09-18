@@ -1,9 +1,10 @@
 import { Router } from "express";
-import passport from "passport";
-import { getMessageList } from "../controllers/messageController.js";
+import messageRouter from "./messageRouter.js";
+import authRouter from "./authRouter.js";
 
 const indexRouter = Router();
 
-indexRouter.get("/", getMessageList);
+indexRouter.use(messageRouter);
+indexRouter.use(authRouter);
 
 export default indexRouter;
