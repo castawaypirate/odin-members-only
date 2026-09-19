@@ -1,10 +1,11 @@
 # backlog: 
-- sign up form (ui, sanitization, validation, post request)
 - login form (ui, post request, session + cookies)
 - show/hide password button
 
 # done:
 - database schema and creation script
+- sign up form (ui, sanitization, validation, post request)
+- logout
 
 
 # structure

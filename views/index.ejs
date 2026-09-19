@@ -8,6 +8,9 @@
   <body>
     <a href="/register">register</a>
     <a href="/login">login</a>
+    <% if (locals.currentUser) {%>
+      <a href="/logout">logout</a>
+    <%}%>
     <h1>list of messages</h1>
     <ul>
     </ul>

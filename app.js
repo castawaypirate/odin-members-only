@@ -2,6 +2,7 @@ import express from "express";
 import session from "express-session";
 import passport from "passport";
 import connectPgSimple from "connect-pg-simple";
+import flash from "connect-flash";
 import methodOverride from "method-override";
 import favicon from "serve-favicon";
 import path from "path";
@@ -49,8 +50,15 @@ app.use(
   }),
 );
 
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 app.use("/", indexRouter);
 
