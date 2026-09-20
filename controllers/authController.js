@@ -36,26 +36,15 @@ export async function getLoginForm(req, res) {
   });
 }
 
-// export async function login(req, res, next) {
-//   const handler = passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/login",
-//     failureFlash: true,
-//   });
-//   handler(req, res, next);
-// }
-
 export const login = [
   validateLogin,
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res
-        .status(400)
-        .render("loginForm", {
-          errors: errors.array(),
-          username: req.body.username,
-        });
+      return res.status(400).render("loginForm", {
+        errors: errors.array(),
+        username: req.body.username,
+      });
     }
     const handler = passport.authenticate("local", {
       successRedirect: "/",
@@ -65,26 +54,6 @@ export const login = [
     handler(req, res, next);
   },
 ];
-
-// export const login = [
-//   validateLogin,
-//   async (req, res) => {
-//     const errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//       return res
-//         .status(400)
-//         .render("loginForm", { errors: errors.array(), user: req.body });
-//     }
-//     // const user = matchedData(req);
-//     // await userModel.createUser(user);
-//
-//     passport.authenticate("local", {
-//       successRedirect: "/",
-//       failureRedirect: "/",
-//       failureMessage: true,
-//     });
-//   },
-// ];
 
 export async function logout(req, res, next) {
   req.logout((err) => {

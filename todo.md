@@ -1,11 +1,25 @@
 # backlog: 
-- login form (ui, post request, session + cookies)
 - show/hide password button
+- styles
+- become member feature
+- create new message form and functionality
+- display messages with author and date on condition for members
+- message view (with delete button for admin)
+- become admin feature
+- delete messages if you are admin 
 
 # done:
 - database schema and creation script
 - sign up form (ui, sanitization, validation, post request)
 - logout
+- login form (ui, post request, session + cookies)
+
+## target
+- become member [24/9]
+
+## takeaways
+- [24/9]:
+    - 
 
 
 # structure

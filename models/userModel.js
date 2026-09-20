@@ -25,3 +25,14 @@ export async function getUserByUsername(username) {
     throw new Error(err);
   }
 }
+
+export async function updateUserMembershipStatus(userId) {
+  try {
+    await pool.query(
+      "update users set membership_status='member' where id = $1",
+      [userId],
+    );
+  } catch (err) {
+    throw new Error(err);
+  }
+}

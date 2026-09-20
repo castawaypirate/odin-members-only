@@ -6,9 +6,13 @@
     <title>Members Only</title>
   </head>
   <body>
-    <a href="/register">register</a>
-    <a href="/login">login</a>
-    <% if (locals.currentUser) {%>
+    <% if (!locals.currentUser) {%>
+      <a href="/register">register</a>
+      <a href="/login">login</a>
+    <%} else {%>
+    <% if (locals.currentUser.membership_status !== "member") {%>
+      <a href="/join">join</a>
+    <%}%>
       <a href="/logout">logout</a>
     <%}%>
     <h1>list of messages</h1>
