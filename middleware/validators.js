@@ -28,3 +28,8 @@ export const validateLogin = [
   body("username").trim().notEmpty().withMessage("Username cannot be empty"),
   body("password").notEmpty().withMessage("Password cannot be empty"),
 ];
+
+export const validateMessage = [
+  body("title").trim().notEmpty().withMessage("Title cannot be empty"),
+  body("body").trim().notEmpty().withMessage("Body cannot be empty"),
+];

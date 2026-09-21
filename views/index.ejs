@@ -12,11 +12,17 @@
     <%} else {%>
     <% if (locals.currentUser.membership_status !== "member") {%>
       <a href="/join">join</a>
+    <%} else {%>
+      <div>hello <%= currentUser.username %></div>
     <%}%>
+      <a href="/messages/new">create message</a>
       <a href="/logout">logout</a>
     <%}%>
     <h1>list of messages</h1>
     <ul>
+      <% for (let message of messages) { %>
+      <%- include("partial/message", {id: message.id, title: message.title, body: message.body, author: message.author, date: message.created_at, isMember: locals.currentUser?.membership_status === "member"}) %>
+      <%}%>
     </ul>
   </body>
 </html>

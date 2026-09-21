@@ -17,7 +17,7 @@ create table if not exists messages (
   title text not null,
   body text not null,
   author_id uuid not null,
-  create_at timestamptz default now(),
+  created_at timestamptz default now(),
   constraint fk_user foreign key (author_id) references users(id) on delete cascade
 )`;
 

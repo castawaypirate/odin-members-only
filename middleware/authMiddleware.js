@@ -1,15 +1,17 @@
 export async function isAuth(req, res, next) {
-  if (req.isAutenticated()) {
+  if (req.isAuthenticated()) {
     next();
   } else {
-    res.status(401).json({ msg: "You are not authenticated" });
+    return res.redirect("/");
+    // res.status(401).json({ msg: "You are not authenticated" });
   }
 }
 
 export async function isMember(req, res, next) {
-  if (req.isAutenticated() && req.user.membership_status === "member") {
+  if (req.isAuthenticated() && req.user.membership_status === "member") {
     next();
   } else {
-    res.status(401).json({ msg: "You are not a member yet" });
+    return res.redirect("/");
+    // res.status(401).json({ msg: "You are not a member yet" });
   }
 }
