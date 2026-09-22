@@ -1,18 +1,19 @@
 # backlog: 
 - show/hide password button
 - styles
-- become member feature
-- create new message form and functionality
-- display messages with author and date on condition for members
 - message view (with delete button for admin)
-- become admin feature
 - delete messages if you are admin 
+- display users for admin view and delete user feature
 
 # done:
 - database schema and creation script
 - sign up form (ui, sanitization, validation, post request)
 - logout
 - login form (ui, post request, session + cookies)
+- become member feature
+- create new message form and functionality
+- display messages with author and date on condition for members
+- become admin feature
 
 ## target
 - become member [24/9]

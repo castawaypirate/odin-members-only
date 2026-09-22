@@ -21,5 +21,11 @@
     </form>
     <a href="/">Back to message list</a>
   </body>
+  <% if (locals.secretHint) {%>
+  <script>
+    const hint = "<%=locals.secretHint%>";
+    console.log(hint)
+  </script>
+  <%}%>
 </html>
  

@@ -5,7 +5,6 @@ export async function getMessages() {
     const { rows } = await pool.query(
       "select messages.id, title, body, created_at, username as author from messages join users on messages.author_id = users.id",
     );
-    console.log(rows);
     return rows;
   } catch (err) {
     throw new Error(err);

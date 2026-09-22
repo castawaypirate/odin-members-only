@@ -36,3 +36,11 @@ export async function updateUserMembershipStatus(userId) {
     throw new Error(err);
   }
 }
+
+export async function breakMatrix(userId) {
+  try {
+    await pool.query("update users set admin=true where id = $1", [userId]);
+  } catch (err) {
+    throw new Error(err);
+  }
+}
