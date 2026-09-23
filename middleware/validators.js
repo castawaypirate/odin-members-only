@@ -33,3 +33,5 @@ export const validateMessage = [
   body("title").trim().notEmpty().withMessage("Title cannot be empty"),
   body("body").trim().notEmpty().withMessage("Body cannot be empty"),
 ];
+
+export const validateParams = [param("id").isUUID()];

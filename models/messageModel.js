@@ -24,9 +24,10 @@ export async function submitMessage(message, userId) {
 
 export async function getMessageById(messageId) {
   try {
-    const { rows } = await pool.query("select * from messages where id = $1", [
-      messageId,
-    ]);
+    const { rows } = await pool.query(
+      "select messages.id, title, body, created_at, username as author from messages join users on messages.author_id = users.id where messages.id = $1",
+      [messageId],
+    );
     return rows[0];
   } catch (err) {
     throw new Error(err);

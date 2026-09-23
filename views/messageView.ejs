@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Message</title>
+  </head>
+  <body>
+    <% if (locals.error) {%>
+      <% if (error === 400) {%>
+        <h1>400 Bad request</h1>
+      <%}%>
+      <% if (error === 404) {%>
+        <h1>404 Not found</h1>
+      <%}%>
+    <%} else {%>
+      <h1><%=message.title%></h1>
+      <p><%=message.body%></p>
+
+      <% if (isMember) {%>
+        <div>
+          <span><%=message.author%></span>
+          <span><%=message.created_at%></span>
+        </div>
+      <%}%>
+      <% if (isAdmin) {%>
+        <div>
+          <button class="remove-button" type="button">delete</button>
+        </div>
+      <%}%>
+    <%}%>
+    <a href="/">Back to message list</a>
+  </body>
+</html>

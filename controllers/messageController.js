@@ -1,6 +1,6 @@
 import { matchedData, validationResult } from "express-validator";
 import { isAuth } from "../middleware/authMiddleware.js";
-import { validateMessage } from "../middleware/validators.js";
+import { validateMessage, validateParams } from "../middleware/validators.js";
 import * as messageModel from "../models/messageModel.js";
 import * as userModel from "../models/userModel.js";
 
@@ -42,5 +42,28 @@ export const submitMessage = [
     }
     await messageModel.submitMessage(message, req.user.id);
     return res.redirect("/");
+  },
+];
+
+export const getMessageView = [
+  validateParams,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("messageView", { error: 400 });
+    }
+
+    const messageId = matchedData(req).id;
+    const message = await messageModel.getMessageById(messageId);
+
+    if (!message) {
+      return res.status(404).render("messageView", { error: 404 });
+    }
+
+    return res.render("messageView", {
+      message: message,
+      isMember: req.user.membership_status === "member",
+      isAdmin: req.user.admin,
+    });
   },
 ];
