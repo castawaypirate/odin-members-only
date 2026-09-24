@@ -33,3 +33,11 @@ export async function getMessageById(messageId) {
     throw new Error(err);
   }
 }
+
+export async function deleteMessage(messageId) {
+  try {
+    await pool.query("delete from messages where id = $1", [messageId]);
+  } catch (err) {
+    throw new Error(err);
+  }
+}

@@ -1,7 +1,6 @@
 # backlog: 
 - show/hide password button
 - styles
-- message view (with delete button for admin)
 - delete messages if you are admin 
 - display users for admin view and delete user feature
 
@@ -13,6 +12,7 @@
 - create new message form and functionality
 - display messages with author and date on condition for members
 - become admin feature
+- message view (with delete button for admin)
 
 ## target
 - become member | login, create new message, display messages, become admin [24/9]

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/js/messageView.js" defer></script>
     <title>Message</title>
   </head>
   <body>
@@ -25,7 +26,7 @@
       <%}%>
       <% if (isAdmin) {%>
         <div>
-          <button class="remove-button" type="button">delete</button>
+          <button data-id="<%=message.id%>" class="remove-button" type="button">delete</button>
         </div>
       <%}%>
     <%}%>

@@ -1,5 +1,5 @@
 import { matchedData, validationResult } from "express-validator";
-import { isAuth } from "../middleware/authMiddleware.js";
+import { isAuth, isAdmin } from "../middleware/authMiddleware.js";
 import { validateMessage, validateParams } from "../middleware/validators.js";
 import * as messageModel from "../models/messageModel.js";
 import * as userModel from "../models/userModel.js";
@@ -62,8 +62,30 @@ export const getMessageView = [
 
     return res.render("messageView", {
       message: message,
-      isMember: req.user.membership_status === "member",
-      isAdmin: req.user.admin,
+      isMember: req.user?.membership_status === "member",
+      isAdmin: req.user?.admin,
     });
+  },
+];
+
+export const deleteMessage = [
+  validateParams,
+  isAuth,
+  isAdmin,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ msg: "Invalid message ID format" });
+    }
+
+    const messageId = matchedData(req).id;
+    const message = await messageModel.getMessageById(messageId);
+
+    if (!message) {
+      return res.status(404).json({ msg: "Message not found" });
+    }
+
+    await messageModel.deleteMessage(messageId);
+    return res.status(200).json({ msg: "Message was deleted" });
   },
 ];
