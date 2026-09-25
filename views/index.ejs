@@ -11,11 +11,16 @@
       <a href="/register">register</a>
       <a href="/login">login</a>
     <%} else {%>
-    <% if (locals.currentUser.membership_status !== "member") {%>
-      <a href="/join">join</a>
-    <%} else {%>
-      <div>hello <%= currentUser.username %></div>
-    <%}%>
+      <% if (locals.currentUser.membership_status !== "member") {%>
+        <a href="/join">join</a>
+      <%} else {%>
+        <div>hello <%= currentUser.username %></div>
+      <%}%>
+
+      <% if (locals.currentUser.admin) {%>
+        <a href="/users">user list</a>
+      <%}%> 
+
       <a href="/messages/new">create message</a>
       <a href="/logout">logout</a>
     <%}%>

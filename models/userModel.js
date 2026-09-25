@@ -1,6 +1,15 @@
 import bcrypt from "bcryptjs";
 import pool from "../config/database.js";
 
+export async function getUsers() {
+  try {
+    const { rows } = await pool.query("select username from users");
+    return rows;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 export async function createUser(user) {
   try {
     const hashedPassword = await bcrypt.hash(user.password, 10);

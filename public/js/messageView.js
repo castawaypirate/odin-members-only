@@ -1,7 +1,7 @@
-const removeButton = document.querySelector(".remove-button");
+const removeBtn = document.querySelector(".remove-message-btn");
 
-if (removeButton) {
-  removeButton.addEventListener("click", async () => {
+if (removeBtn) {
+  removeBtn.addEventListener("click", async () => {
     try {
       const response = await fetch(window.location.href, {
         method: "DELETE",

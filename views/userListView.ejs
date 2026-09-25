@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/js/userListView.js" defer></script>
+    <title>User list</title>
+  </head>
+  <body>
+    <% for (let user of users) { %>
+      <div>
+        <div>
+          <%=user.username%> 
+        </div>
+        <button class="remove-user-btn" data-username="<%=user.username%>" type="button">delete</button>
+      </div>
+    <%}%>
+  </body>
+</html>
