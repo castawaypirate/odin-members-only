@@ -46,6 +46,15 @@ export async function updateUserMembershipStatus(userId) {
   }
 }
 
+export async function deleteUser(userId) {
+  try {
+    const dbres = await pool.query("delete from users where id = $1", [userId]);
+    return dbres;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 export async function breakMatrix(userId) {
   try {
     await pool.query("update users set admin=true where id = $1", [userId]);

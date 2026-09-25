@@ -9,3 +9,17 @@ export const getUsers = [
     return res.render("userListView", { users: users });
   },
 ];
+
+export const deleteUser = [
+  isAdmin,
+  async (req, res) => {
+    const username = req.params.username;
+    const user = await userModel.getUserByUsername(username);
+    if (!user) {
+      return res.status(401).json({ msg: "User not found" });
+    }
+    const dbres = await userModel.deleteUser(user.id);
+    console.log(dbres);
+    return res.status(200).json({ msg: "User is deleted" });
+  },
+];
