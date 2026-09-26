@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

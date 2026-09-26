@@ -15,7 +15,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env app.js"
+    "dev": "nodemon --env-file=.env app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
