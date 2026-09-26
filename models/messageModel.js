@@ -3,7 +3,7 @@ import pool from "../config/database.js";
 export async function getMessages() {
   try {
     const { rows } = await pool.query(
-      "select messages.id, title, body, created_at, username as author from messages join users on messages.author_id = users.id",
+      "select messages.id, title, body, created_at, concat(firstname, ' ', lastname) as author from messages join users on messages.author_id = users.id",
     );
     return rows;
   } catch (err) {
@@ -25,7 +25,7 @@ export async function submitMessage(message, userId) {
 export async function getMessageById(messageId) {
   try {
     const { rows } = await pool.query(
-      "select messages.id, title, body, created_at, username as author from messages join users on messages.author_id = users.id where messages.id = $1",
+      "select messages.id, title, body, created_at, concat(firstname, ' ', lastname) as author from messages join users on messages.author_id = users.id where messages.id = $1",
       [messageId],
     );
     return rows[0];
