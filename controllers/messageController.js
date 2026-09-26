@@ -3,9 +3,13 @@ import { isAuth, isAdmin } from "../middleware/authMiddleware.js";
 import { validateMessage, validateParams } from "../middleware/validators.js";
 import * as messageModel from "../models/messageModel.js";
 import * as userModel from "../models/userModel.js";
+import { format } from "date-fns";
 
 export async function getMessageList(req, res) {
   const messages = await messageModel.getMessages();
+  messages.forEach(
+    (m) => (m.created_at = format(new Date(m.created_at), "dd-MM-yyyy")),
+  );
   return res.render("index", { messages: messages });
 }
 
@@ -60,6 +64,7 @@ export const getMessageView = [
       return res.status(404).render("messageView", { error: 404 });
     }
 
+    message.created_at = format(new Date(message.created_at), "dd-MM-yyyy");
     return res.render("messageView", {
       message: message,
       isMember: req.user?.membership_status === "member",

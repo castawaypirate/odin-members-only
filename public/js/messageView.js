@@ -6,7 +6,7 @@ if (removeBtn) {
       const response = await fetch(window.location.href, {
         method: "DELETE",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
       });

@@ -1,7 +1,5 @@
 # backlog: 
-- show/hide password button
-- styles
-- display users for admin view and delete user feature
+- show/hide password button (optional)
 
 # done:
 - database schema and creation script
@@ -13,10 +11,14 @@
 - become admin feature
 - message view (with delete button for admin)
 - delete messages if you are admin 
+- styles
+- display users for admin view and delete user feature
+
 
 ## target
 - become member | login, create new message, display messages, become admin [24/9]
 - message view, delete message if you admin, display users for admin [25/9]
+- deployment [26/9]
 
 ## takeaways
 - [24/9]:
@@ -31,7 +33,13 @@
     - if you use failureflash it means you are passing error message after failed authentication so you need connect-flash package which also you have to set it up
     - never get user id from req.session.passport.user, instead inside the strategy query (deserializeUser function) return the desired fields you need and get whatever you need from req.user object
 - [25/9]:
-    - 
+    - return json for the enpoints that are going to be used be the client side javascript and based on the result navigate the user to the proper route
+    - try/catch on client side doesn't catch server side errors, it catches errors like network failure and stuff like that - server side error are returned with the response and you have to handle before catch
+    - deleting user while user has an active session makes the deserializeUser crash so you have to handle the case when the query returns nothing and pass to done(null, false) something like that
+    - add Accept: "application/json" to the fetch request - this tells the server that the data the server will send back to the client should be JSON
+    - in middlewares for examples you can handle different requests that except are response different things - for example with req.accept("json", "html") read the Accept header (for example the one we set above) and it returns what the request excepts as return and you can moderate your middlewares to return the right response
+    - use encodeURIComponent we using dynamic string in window.location.href because the string you are going to use may contain characters that will break the url (we did this for username)
+    - use grid instead of flex to the parent element for example to .user-list with grid-template-columns: min-content auto and use display: contents to the child elements .user.row to show two columns with aligned width
 
 
 # structure

@@ -4,31 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/js/index.js" defer></script>
+    <link href="/css/index.css" rel="stylesheet" />
     <title>Members Only</title>
   </head>
   <body>
-    <% if (!locals.currentUser) {%>
-      <a href="/register">register</a>
-      <a href="/login">login</a>
-    <%} else {%>
-      <% if (locals.currentUser.membership_status !== "member") {%>
-        <a href="/join">join</a>
-      <%} else {%>
-        <div>hello <%= currentUser.username %></div>
-      <%}%>
+    <header>
+      <h1>Node Board</h1>
+      <div class="user-nav">
+        <% if (!locals.currentUser) {%>
+          <a href="/register">Register</a>
+          <div class="divider">|</div>
+          <a href="/login">Login</a>
+        <%} else {%>
+          <% if (locals.currentUser.membership_status === "member") {%>
+             <div class="username"><%=currentUser.username%></div>
+          <%}%>
 
-      <% if (locals.currentUser.admin) {%>
-        <a href="/users">user list</a>
-      <%}%> 
+          <div class="user-actions">
+            <a href="/messages/new">Post message</a>
+            <div class="divider">|</div>
+            <% if (locals.currentUser.membership_status !== "member") {%>
+              <a href="/join">Join</a>
+              <div class="divider">|</div>
+            <%}%>
 
-      <a href="/messages/new">create message</a>
-      <a href="/logout">logout</a>
-    <%}%>
-    <h1>list of messages</h1>
-    <ul>
-      <% for (let message of messages) { %>
-      <%- include("partial/message", {id: message.id, title: message.title, body: message.body, author: message.author, date: message.created_at, isMember: locals.currentUser?.membership_status === "member"}) %>
-      <%}%>
-    </ul>
+            <% if (locals.currentUser.admin) {%>
+              <a href="/users">User list</a>
+              <div class="divider">|</div>
+            <%}%> 
+
+            <a href="/logout">Logout</a>
+          </div>
+        <%}%>
+      </div>
+    </header>
+    <div class="content">
+      <ul class="message-list">
+        <% for (let message of messages) { %>
+        <%- include("partial/message", {id: message.id, title: message.title, body: message.body, author: message.author, date: message.created_at, isMember: locals.currentUser?.membership_status === "member"}) %>
+        <%}%>
+      </ul>
+    </div>
   </body>
 </html>

@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/js/userListView.js" defer></script>
+    <link href="/css/userListView.css" rel="stylesheet" />
     <title>User list</title>
   </head>
   <body>
-    <% for (let user of users) { %>
-      <div>
-        <div>
-          <%=user.username%> 
-        </div>
-        <button class="remove-user-btn" data-username="<%=user.username%>" type="button">delete</button>
+    <div class="content">
+      <h1>User list</h1>
+      <div class="user-list">
+        <% for (let user of users) { %>
+          <div class="user-row">
+            <div class="username">
+              <%=user.username%> 
+            </div>
+            <button class="remove-user-btn" data-username="<%=user.username%>" type="button">Delete</button>
+          </div>
+        <%}%>
       </div>
-    <%}%>
-    <a href="/">Back to message list</a>
+      <a href="/">Back to message list</a>
+    </div>
   </body>
 </html>

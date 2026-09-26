@@ -1,10 +1,11 @@
-<li>
+<li class="message-item">
   <div data-id="<%= id%>" class="message">
     <h3><%=title%></h3>
     <p><%=body%></p>
     <% if (isMember) {%>
-    <div>
+    <div class="message-meta">
       <span><%=author%></span>
+      <span>|</span>
       <span><%=date%></span>
     </div>
     <%}%>

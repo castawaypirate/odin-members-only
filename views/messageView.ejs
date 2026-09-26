@@ -4,32 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/js/messageView.js" defer></script>
+    <link href="/css/messageView.css" rel="stylesheet" />
     <title>Message</title>
   </head>
   <body>
-    <% if (locals.error) {%>
-      <% if (error === 400) {%>
-        <h1>400 Bad request</h1>
-      <%}%>
-      <% if (error === 404) {%>
-        <h1>404 Not found</h1>
-      <%}%>
-    <%} else {%>
-      <h1><%=message.title%></h1>
-      <p><%=message.body%></p>
+    <div class="content">
+      <% if (locals.error) {%>
+        <% if (error === 400) {%>
+          <h1>400 Bad request</h1>
+        <%}%>
+        <% if (error === 404) {%>
+          <h1>404 Not found</h1>
+        <%}%>
+      <%} else {%>
+        <h1><%=message.title%></h1>
+        <p><%=message.body%></p>
 
-      <% if (isMember) {%>
-        <div>
-          <span><%=message.author%></span>
-          <span><%=message.created_at%></span>
-        </div>
+        <% if (isMember) {%>
+          <div class="message-meta">
+            <span><%=message.author%></span>
+            <span>|</span>
+            <span><%=message.created_at%></span>
+          </div>
+        <%}%>
+        <% if (isAdmin) {%>
+          <div>
+            <button data-id="<%=message.id%>" class="remove-message-btn" type="button">Delete</button>
+          </div>
+        <%}%>
       <%}%>
-      <% if (isAdmin) {%>
-        <div>
-          <button data-id="<%=message.id%>" class="remove-message-btn" type="button">delete</button>
-        </div>
-      <%}%>
-    <%}%>
-    <a href="/">Back to message list</a>
+      <div class="link">
+        <a href="/">Back to message list</a>
+      </div>
+    </div>
   </body>
 </html>

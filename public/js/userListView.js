@@ -9,7 +9,7 @@ for (let btn of removeUserBtns) {
         {
           method: "DELETE",
           headers: {
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
             Accept: "application/json",
           },
         },
